@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <title>Список пользователей</title>
+</head>
+<body>
+    <!-- Модальное окно -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="exampleModalLabel">Информация о пользователе:</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered border-black mx-auto p-2 text-center">
+              <thead class="table-secondary border-black">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Имя</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr>
+                  <td id="user-id"></td>
+                  <td id="user-username"></td>
+                  <td id="user-email"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <section id="user-list-section" class="text-center">
+        <h1 id="users-title" class="p-3 font-monospace text-decoration-underline">
+          Список пользователей<br>
+        </h1>
+        <table id="users-table" class="table table-secondary table-hover table-bordered border-black w-50 mx-auto p-2">
+          <thead class="table-primary border-black">
+            <tr>
+              <th scope="col">№ п/п</th>
+              <th scope="col">Имя</th>
+            </tr>
+          </thead>
+          <tbody id="tbody" class="table-group-divider"></tbody>
+        </table>
+      </section>
+
+      <section id="add-user-section">
+        <h2 id="section-title" class="p-3 font-monospace text-decoration-underline text-wrap text-center">
+          Форма добавления пользователей
+        </h2>
+        <form id="add-user-form">
+          <div class="mb-3">
+            <label for="exampleInputText" class="form-label">Имя пользователя</label>
+            <input type="text" class="form-control" id="exampleInputText">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Добавить</button>
+          <p class="text-center text-uppercase" id="message"></p>
+        </form>
+      </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
